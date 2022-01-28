@@ -31,7 +31,7 @@ namespace Arkanoid
                 passwordBox.Password = "Hola que ase";
         
         }
-
+        //hola que ase  
 
        
     }
