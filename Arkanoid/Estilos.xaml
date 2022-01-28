@@ -1,8 +1,25 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
 
+    <Style TargetType="StackPanel" x:Key="sp_General" >
+        <Setter Property="Grid.Row" Value="1"/>
+        <Setter Property="Grid.Column" Value="1"/>
+        <Setter Property="Visibility" Value="Hidden"/>
 
+        <Style.Triggers>
 
+        </Style.Triggers>
+    </Style>
+    <Style TargetType="Label" x:Key="lbl_Creditos" >
+        <Setter Property="FontFamily" Value="Papyrus"/>
+        <Setter Property="FontSize" Value="42"/>
+        <Setter Property="HorizontalContentAlignment" Value="center"/>
+
+        <Style.Triggers>
+
+        </Style.Triggers>
+    </Style>
+   
 
     <!--<TextBox>
         <TextBox.Style>

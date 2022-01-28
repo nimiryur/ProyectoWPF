@@ -1,11 +1,11 @@
-﻿<Window x:Class="Arkanoid.MainWindow"
+﻿<Window x:Class="Arkanoid.Creditos"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Arkanoid"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="Creditos" Height="450" Width="800">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>
@@ -18,12 +18,17 @@
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
         <StackPanel x:Name="spTitulo" Grid.Row="0" Grid.Column="1" HorizontalAlignment="Center" >
-            <Label Content="ARKANOID" FontSize="42"/>    
+            <Label Content="ARKANOID" FontSize="42"/>
         </StackPanel>
-        <StackPanel x:Name="spLogin" Style="{StaticResource sp_General}">
+        <StackPanel Name="spCreditos" Grid.Row="1" Grid.Column="1" Visibility="Visible">
+            <Label Content="hola" />
+            <Label/>
+            <Label/>
+        </StackPanel>
+        <StackPanel x:Name="spLogin" Grid.Row="1" Grid.Column="1" Visibility="Hidden">
             <StackPanel>
                 <StackPanel>
-                    <Label Content="Nick: " />
+                    <Label Content="Nick: "/>
                     <TextBox x:Name="tb_Nick" />
                 </StackPanel>
                 <StackPanel HorizontalAlignment="Stretch">
@@ -36,29 +41,10 @@
                 <Button Content="REGISTRARSE" FontSize="30" Width="278"/>
             </DockPanel>
         </StackPanel>
-        <StackPanel x:Name="sp_Clasificacion" Style="{StaticResource sp_General}" Grid.RowSpan="2" Visibility="Visible">
-            <Label Content="Clasificacion" Style="{StaticResource lbl_Creditos}"/>
-            <Label Content="{Binding GetClasificacion}"/>    
-            <ListView />
-        </StackPanel>
-        <StackPanel Style="{StaticResource sp_General}">
-
-        </StackPanel>
-        <StackPanel Style="{StaticResource sp_General}">
-
-        </StackPanel>
-        <StackPanel Name="spCreditos"  Style="{StaticResource sp_General}" 
-                    HorizontalAlignment="Stretch" 
-                    VerticalAlignment="Center">
-            <Label Content="Inés del Amo" Style="{StaticResource lbl_Creditos}"/>
-            <Label Content="Guillermo Ruiz" Style="{StaticResource lbl_Creditos}"/>
-            <Label Content="George Roman" Style="{StaticResource lbl_Creditos}" />
-        </StackPanel>
         <DockPanel Grid.Row="2" Grid.Column="2" HorizontalAlignment="Center" VerticalAlignment="Center" >
             <Button FontSize="18" FontWeight="Bold" Width="94" >
                 <TextBlock TextAlignment="Center">VOLVER<LineBreak/>AL<LineBreak/> INICIO</TextBlock>
             </Button>
         </DockPanel>
-
     </Grid>
 </Window>
