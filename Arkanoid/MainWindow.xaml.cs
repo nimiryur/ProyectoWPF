@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Windows.Threading;
 
 namespace Arkanoid
 {
@@ -20,18 +21,17 @@ namespace Arkanoid
     /// </summary>
     public partial class MainWindow : Window
     {
+        ManagerArkanoid mArk = new ManagerArkanoid();
+
+        
         public MainWindow()
         {
             InitializeComponent();
-            
+            DataContext = mArk;
         }
-        //private void passwordChanged(object sender, RoutedEventArgs e)
-        //{
-        //    if (passwordBox.Password.Length == 0)
-        //        passwordBox.Password = "Hola que ase";
 
-        //}
-
+        
+       
         //GetClasificacion
 
 

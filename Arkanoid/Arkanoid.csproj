@@ -6,4 +6,94 @@
     <UseWPF>true</UseWPF>
   </PropertyGroup>
 
+  <ItemGroup>
+    <None Remove="Font\ARKANOID.TTF" />
+    <None Remove="Font\Arka_solid.ttf" />
+    <None Remove="Images\Avatar\chica_rosa.png" />
+    <None Remove="Images\Avatar\chico.png" />
+    <None Remove="Images\Avatar\ninja_azul.png" />
+    <None Remove="Images\Avatar\ninja_rojo.png" />
+    <None Remove="Images\Avatar\pollo.png" />
+    <None Remove="Images\Avatar\tortuga.png" />
+    <None Remove="Images\Escenario\fondo1.png" />
+    <None Remove="Images\Escenario\fondo2.png" />
+    <None Remove="Images\Escenario\fondo3.png" />
+    <None Remove="Images\Escenario\fondo4.png" />
+    <None Remove="Images\Escenario\fondo5.png" />
+    <None Remove="Images\Naves\nave1.png" />
+    <None Remove="Images\Naves\nave2.png" />
+    <None Remove="Images\Naves\nave3.png" />
+    <None Remove="Images\Naves\nave4.png" />
+    <None Remove="Images\pelota.png" />
+    <None Remove="Images\taza.png" />
+    <None Remove="Images\tuerca.png" />
+    <None Remove="milky-way-ge7a2c52f4_1920.jpg" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="Font\ARKANOID.TTF">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Font\Arka_solid.ttf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\Avatar\chica_rosa.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\Avatar\chico.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\Avatar\ninja_azul.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\Avatar\ninja_rojo.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\Avatar\pollo.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\Avatar\tortuga.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\Escenario\fondo1.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\Escenario\fondo2.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\Escenario\fondo3.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\Escenario\fondo4.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\Escenario\fondo5.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\Naves\nave1.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\Naves\nave2.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\Naves\nave3.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\Naves\nave4.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\pelota.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\taza.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\tuerca.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="milky-way-ge7a2c52f4_1920.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
 </Project>

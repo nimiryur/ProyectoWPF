@@ -6,6 +6,6 @@
     <Application.Resources>
 
         <ResourceDictionary Source="Estilos.xaml" />
-        
+       
     </Application.Resources>
 </Application>

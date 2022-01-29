@@ -6,7 +6,16 @@
         xmlns:local="clr-namespace:Arkanoid"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
+  
     <Grid>
+        <Grid.Background>
+            <ImageBrush Stretch="UniformToFill" 
+                            AlignmentY="Center" 
+                            AlignmentX="Center"
+                            ImageSource="/milky-way-ge7a2c52f4_1920.jpg"
+                            ViewboxUnits="RelativeToBoundingBox"
+                            TileMode="None"/>
+        </Grid.Background>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="4*"/>
@@ -17,8 +26,13 @@
             <RowDefinition Height="3*"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
-        <StackPanel x:Name="spTitulo" Grid.Row="0" Grid.Column="1" HorizontalAlignment="Center" >
-            <Label Content="ARKANOID" FontSize="42"/>    
+        
+        <StackPanel x:Name="spTitulo" Grid.Row="0" Grid.Column="1" HorizontalAlignment="Center">
+            <Label Content="ARKANOID" Style="{StaticResource lbl_Titulo}"/>    
+        </StackPanel>
+        <StackPanel x:Name="spCarga"  Style="{StaticResource sp_General}" Visibility="{Binding Path=ManSPanel.SpCarga}" >
+            <Label x:Name="lbl_Cargando" Content="{Binding Path=VenCar.TextoCargando}" FontSize="30" Foreground="#FFF5EEEE" />
+           
         </StackPanel>
         <StackPanel x:Name="spLogin" Style="{StaticResource sp_General}">
             <StackPanel>
@@ -36,16 +50,82 @@
                 <Button Content="REGISTRARSE" FontSize="30" Width="278"/>
             </DockPanel>
         </StackPanel>
-        <StackPanel x:Name="sp_Clasificacion" Style="{StaticResource sp_General}" Grid.RowSpan="2" Visibility="Visible">
+        <StackPanel x:Name="spRegistro" Style="{StaticResource sp_General}"  Grid.RowSpan="2">
+            <StackPanel  >
+                <StackPanel>
+                    <Label Content="Nick: "  Style="{StaticResource lbl_Texto}"/>
+                    <TextBox x:Name="tb_NickR" />
+                </StackPanel>
+                <StackPanel>
+                    <Label Content="Email: " Style="{StaticResource lbl_Texto}" />
+                    <TextBox x:Name="tb_Email" />
+                </StackPanel>
+                <StackPanel >
+                    <Label Content="Password: " Style="{StaticResource lbl_Texto}" />
+                    <PasswordBox/>
+                </StackPanel>
+                <StackPanel >
+                    <Label Content="Repetir password: " Style="{StaticResource lbl_Texto}"/>
+                    <PasswordBox/>
+                </StackPanel>
+            </StackPanel>
+            <DockPanel VerticalAlignment="Bottom" Margin="0,50,0,0">
+                <Button Content="REGISTRARSE" FontSize="30" Width="200"/>
+            </DockPanel>
+        </StackPanel>
+        <StackPanel x:Name="sp_Clasificacion" Style="{StaticResource sp_General}" Grid.RowSpan="2" >
             <Label Content="Clasificacion" Style="{StaticResource lbl_Creditos}"/>
-            <Label Content="{Binding GetClasificacion}"/>    
+            <Label Content="{Binding GetClasificacion}"/>
             <ListView />
         </StackPanel>
-        <StackPanel Style="{StaticResource sp_General}">
-
+        <StackPanel x:Name="spMenu" Style="{StaticResource sp_General}" Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="3" Grid.RowSpan="2" >
+            <DockPanel  >
+                <Button Style="{StaticResource btn_Logos}" HorizontalAlignment="Left" >
+                    <Button.Background>
+                        <ImageBrush ImageSource="/Images/taza.png"/>
+                    </Button.Background>
+                </Button>
+                <Button Style="{StaticResource btn_Logos}" HorizontalAlignment="Right"  >
+                    <Button.Background>
+                        <ImageBrush ImageSource="/Images/tuerca.png"/>
+                    </Button.Background>
+                </Button>
+            </DockPanel>
+            <StackPanel>
+                <Button Name="btnPlay" Content="PLAY" FontSize="30" Padding="15" HorizontalAlignment="Center"/>   
+            </StackPanel>
         </StackPanel>
-        <StackPanel Style="{StaticResource sp_General}">
-
+        <StackPanel x:Name="spAjustes" Style="{StaticResource sp_General}" >
+            <DockPanel HorizontalAlignment="Stretch" >
+                <Label Content="MUSICA" Style="{StaticResource lbl_Texto}" HorizontalContentAlignment="Left"/>
+                <Slider x:Name="slMusica" Width="325" VerticalAlignment="Center" HorizontalAlignment="Right"/>
+            </DockPanel>
+            <DockPanel HorizontalAlignment="Stretch" >
+                <Label Content="EFECTOS" Style="{StaticResource lbl_Texto}" HorizontalContentAlignment="Left"/>
+                <Slider x:Name="slEfectos" Width="325" VerticalAlignment="Center"  HorizontalAlignment="Right"/>
+            </DockPanel>
+            <DockPanel>
+                <Button Content="CAMBIAR AVATAR"/>
+                <Button Content="CAMBIAR NAVE"/>
+                <Button Content="CAMBIAR ESCENARIO"/>
+            </DockPanel>
+            <DockPanel HorizontalAlignment="Stretch">
+                <Label Content="NICK" Style="{StaticResource lbl_Texto}" HorizontalContentAlignment="Left"/>
+                <TextBox x:Name="tbNick" Width="200" HorizontalAlignment="Center"/>
+                <Button x:Name="actNick" Content="Actualizar" Width="100" HorizontalAlignment="Right"/>   
+            </DockPanel>
+              
+        </StackPanel>
+        <StackPanel x:Name="spAvatar" Style="{StaticResource sp_General}" Visibility="Hidden">
+            <Label>
+                
+            </Label>
+        </StackPanel>
+        <StackPanel x:Name="spEscenario" Style="{StaticResource sp_General}">
+            
+        </StackPanel>
+        <StackPanel x:Name="spNave" Style="{StaticResource sp_General}">
+            
         </StackPanel>
         <StackPanel Name="spCreditos"  Style="{StaticResource sp_General}" 
                     HorizontalAlignment="Stretch" 
@@ -54,7 +134,7 @@
             <Label Content="Guillermo Ruiz" Style="{StaticResource lbl_Creditos}"/>
             <Label Content="George Roman" Style="{StaticResource lbl_Creditos}" />
         </StackPanel>
-        <DockPanel Grid.Row="2" Grid.Column="2" HorizontalAlignment="Center" VerticalAlignment="Center" >
+        <DockPanel Grid.Row="2" Grid.Column="2" HorizontalAlignment="Center" VerticalAlignment="Center" Visibility="Hidden" >
             <Button FontSize="18" FontWeight="Bold" Width="94" >
                 <TextBlock TextAlignment="Center">VOLVER<LineBreak/>AL<LineBreak/> INICIO</TextBlock>
             </Button>

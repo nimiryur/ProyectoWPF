@@ -10,8 +10,34 @@
 
         </Style.Triggers>
     </Style>
+    
+    <Style TargetType="Label"  x:Key="lbl_Titulo">
+        <Setter Property="Margin" Value="0,15,0,0"/>   
+        <Setter Property="FontFamily" Value="Font/ARKANOID.ttf#ARKANOID"/>
+        <Setter Property="FontSize" Value="60"/>
+        <Setter Property="HorizontalContentAlignment" Value="center"/>
+        <Setter Property="Foreground" Value="#FFEAE1E1"/>
+        <Style.Resources>
+            <Label x:Key="lbl_Titulo">
+                <Label.Background>
+                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                        <GradientStop Color="#FFE6434A"/>
+                        <GradientStop Color="#FFFDF1F9" Offset="1"/>
+                        <GradientStop Color="#FF698AE2" Offset="0.463"/>
+                    </LinearGradientBrush>
+                </Label.Background>
+            </Label>
+            
+        </Style.Resources>
+        
+
+        <Style.Triggers>
+
+        </Style.Triggers>
+    </Style>
+    
     <Style TargetType="Label" x:Key="lbl_Creditos" >
-        <Setter Property="FontFamily" Value="Papyrus"/>
+        <Setter Property="FontFamily" Value="Font/ARKANOID.ttf#ARKANOID"/>
         <Setter Property="FontSize" Value="42"/>
         <Setter Property="HorizontalContentAlignment" Value="center"/>
 
@@ -19,7 +45,56 @@
 
         </Style.Triggers>
     </Style>
-   
+
+    <Style TargetType="Label" x:Key="lbl_Texto" >
+        <Setter Property="FontFamily" Value="Font/ARKANOID.ttf#ARKANOID"/>
+        <Setter Property="FontSize" Value="18"/>
+        <Setter Property="Foreground" Value="AntiqueWhite"/>    
+        <Style.Triggers>
+
+        </Style.Triggers>
+    </Style>
+
+
+    <Style TargetType="Button" x:Key="btn_Logos">
+        <Setter Property="Margin" Value="25,25,25,25"/>
+        <Setter Property="Width" Value="70"/>
+        <Setter Property="Height" Value="70"/>
+        <Setter Property="BorderThickness" Value="0"/>
+        <Setter Property="Background" Value="{x:Null}"></Setter>
+        <Setter Property="BorderBrush" Value="Transparent"></Setter>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Button">
+                    <Border Background="{TemplateBinding Background}"
+                            BorderBrush="{TemplateBinding BorderBrush}"
+                            BorderThickness="{TemplateBinding BorderThickness}">
+                        <ContentPresenter x:Name="PART_Content"
+                                 VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                                 HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                 TextElement.Foreground="{TemplateBinding Foreground}">
+                        </ContentPresenter>
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+        <Style.Triggers>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter Property="Background" Value="AliceBlue"></Setter>
+                <Trigger.EnterActions>
+                    <BeginStoryboard>
+                        <Storyboard>
+
+
+
+                        </Storyboard>
+                    </BeginStoryboard>
+                </Trigger.EnterActions>
+            </Trigger>
+            <Trigger Property="Background" Value="{x:Null}"/>
+            <Trigger Property="Foreground" Value="{x:Null}"/>
+        </Style.Triggers>
+    </Style>
 
     <!--<TextBox>
         <TextBox.Style>
