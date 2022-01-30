@@ -28,11 +28,10 @@
         </Grid.RowDefinitions>
 
         <StackPanel x:Name="spTitulo" Grid.Row="0" Grid.Column="1" HorizontalAlignment="Center">
-            <Label Content="ARKANOID" Style="{StaticResource lbl_Titulo}"/>
+            <Label Content="ARKANOID MI CAMBIO" Style="{StaticResource lbl_Titulo}"/>
         </StackPanel>
         <StackPanel x:Name="spCarga"  Style="{StaticResource sp_General}" Visibility="{Binding Path=ManSPanel.SpCarga}" >
             <Label x:Name="lbl_Cargando" Content="{Binding Path=VenCar.TextoCargando}" FontSize="30" Foreground="#FFF5EEEE" />
-
         </StackPanel>
         <StackPanel x:Name="spLogin" Style="{StaticResource sp_General}" Visibility="Visible" >
             <StackPanel>
