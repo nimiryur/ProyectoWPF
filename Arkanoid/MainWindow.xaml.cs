@@ -23,6 +23,7 @@ namespace Arkanoid
     {
         ManagerArkanoid mArk = new ManagerArkanoid();
 
+        // HELOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO
         
         public MainWindow()
         {
