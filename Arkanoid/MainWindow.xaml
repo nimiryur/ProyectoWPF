@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:Arkanoid"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
-  
+
     <Grid>
         <Grid.Background>
             <ImageBrush Stretch="UniformToFill" 
@@ -26,15 +26,15 @@
             <RowDefinition Height="3*"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
-        
+
         <StackPanel x:Name="spTitulo" Grid.Row="0" Grid.Column="1" HorizontalAlignment="Center">
-            <Label Content="ARKANOID" Style="{StaticResource lbl_Titulo}"/>    
+            <Label Content="ARKANOID" Style="{StaticResource lbl_Titulo}"/>
         </StackPanel>
         <StackPanel x:Name="spCarga"  Style="{StaticResource sp_General}" Visibility="{Binding Path=ManSPanel.SpCarga}" >
             <Label x:Name="lbl_Cargando" Content="{Binding Path=VenCar.TextoCargando}" FontSize="30" Foreground="#FFF5EEEE" />
-           
+
         </StackPanel>
-        <StackPanel x:Name="spLogin" Style="{StaticResource sp_General}">
+        <StackPanel x:Name="spLogin" Style="{StaticResource sp_General}" Visibility="Visible" >
             <StackPanel>
                 <StackPanel>
                     <Label Content="Nick: " />
@@ -46,11 +46,11 @@
                 </StackPanel>
             </StackPanel>
             <DockPanel>
-                <Button Content="ENTRAR" FontSize="30" Width="256"/>
-                <Button Content="REGISTRARSE" FontSize="30" Width="278"/>
+                <Button Content="ENTRAR" Width="256" Template="{StaticResource btnVarios}"/>
+                <Button Content="REGISTRARSE" Width="278" Template="{StaticResource btnStyleCopy}"/>
             </DockPanel>
         </StackPanel>
-        <StackPanel x:Name="spRegistro" Style="{StaticResource sp_General}"  Grid.RowSpan="2">
+        <StackPanel x:Name="spRegistro" Style="{StaticResource sp_General}"  Grid.RowSpan="2"  >
             <StackPanel  >
                 <StackPanel>
                     <Label Content="Nick: "  Style="{StaticResource lbl_Texto}"/>
@@ -73,12 +73,12 @@
                 <Button Content="REGISTRARSE" FontSize="30" Width="200"/>
             </DockPanel>
         </StackPanel>
-        <StackPanel x:Name="sp_Clasificacion" Style="{StaticResource sp_General}" Grid.RowSpan="2" >
+        <StackPanel x:Name="sp_Clasificacion" Style="{StaticResource sp_General}" Grid.RowSpan="2"  >
             <Label Content="Clasificacion" Style="{StaticResource lbl_Creditos}"/>
-            <Label Content="{Binding GetClasificacion}"/>
-            <ListView />
+            <Label Content="{Binding GetClasificacion}" />
+            <ListView ItemsSource="{Binding}" IsSynchronizedWithCurrentItem="True"/>
         </StackPanel>
-        <StackPanel x:Name="spMenu" Style="{StaticResource sp_General}" Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="3" Grid.RowSpan="2" >
+        <StackPanel x:Name="spMenu" Style="{StaticResource sp_General}" Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="3" Grid.RowSpan="2"  >
             <DockPanel  >
                 <Button Style="{StaticResource btn_Logos}" HorizontalAlignment="Left" >
                     <Button.Background>
@@ -92,10 +92,15 @@
                 </Button>
             </DockPanel>
             <StackPanel>
-                <Button Name="btnPlay" Content="PLAY" FontSize="30" Padding="15" HorizontalAlignment="Center"/>   
+                <Button Name="btnPlay" Content="PLAY" FontSize="30" Padding="15" HorizontalAlignment="Center"/>
             </StackPanel>
         </StackPanel>
         <StackPanel x:Name="spAjustes" Style="{StaticResource sp_General}" >
+            <DockPanel HorizontalAlignment="Stretch">
+                <Label Content="NICK" Style="{StaticResource lbl_Texto}" HorizontalContentAlignment="Left"/>
+                <TextBox x:Name="tbNick" Width="200" HorizontalAlignment="Center"/>
+                <Button x:Name="actNick" Content="Actualizar" Width="100" HorizontalAlignment="Right"/>
+            </DockPanel>
             <DockPanel HorizontalAlignment="Stretch" >
                 <Label Content="MUSICA" Style="{StaticResource lbl_Texto}" HorizontalContentAlignment="Left"/>
                 <Slider x:Name="slMusica" Width="325" VerticalAlignment="Center" HorizontalAlignment="Right"/>
@@ -104,30 +109,62 @@
                 <Label Content="EFECTOS" Style="{StaticResource lbl_Texto}" HorizontalContentAlignment="Left"/>
                 <Slider x:Name="slEfectos" Width="325" VerticalAlignment="Center"  HorizontalAlignment="Right"/>
             </DockPanel>
-            <DockPanel>
-                <Button Content="CAMBIAR AVATAR"/>
-                <Button Content="CAMBIAR NAVE"/>
-                <Button Content="CAMBIAR ESCENARIO"/>
-            </DockPanel>
-            <DockPanel HorizontalAlignment="Stretch">
-                <Label Content="NICK" Style="{StaticResource lbl_Texto}" HorizontalContentAlignment="Left"/>
-                <TextBox x:Name="tbNick" Width="200" HorizontalAlignment="Center"/>
-                <Button x:Name="actNick" Content="Actualizar" Width="100" HorizontalAlignment="Right"/>   
-            </DockPanel>
-              
-        </StackPanel>
-        <StackPanel x:Name="spAvatar" Style="{StaticResource sp_General}" Visibility="Hidden">
-            <Label>
-                
-            </Label>
-        </StackPanel>
-        <StackPanel x:Name="spEscenario" Style="{StaticResource sp_General}">
+            <ScrollViewer  HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Hidden">
+                <StackPanel >
+                    <DockPanel>
+                        <Button Height="95" Width="95">
+                            <Button.Background>
+                                <ImageBrush ImageSource="/Images/Avatar/pollo.png"/>
+                            </Button.Background>
+                        </Button>
+                        <Button Height="95" Width="95">
+                            <Button.Background>
+                                <ImageBrush ImageSource="/Images/Avatar/pollo.png"/>
+                            </Button.Background>
+                        </Button>
+                        <Button Height="95" Width="95">
+                            <Button.Background>
+                                <ImageBrush ImageSource="/Images/Avatar/pollo.png"/>
+                            </Button.Background>
+                        </Button>
+                        <Button Height="95" Width="95">
+                            <Button.Background>
+                                <ImageBrush ImageSource="/Images/Avatar/pollo.png"/>
+                            </Button.Background>
+                        </Button>
+                        <Button Height="95" Width="95">
+                            <Button.Background>
+                                <ImageBrush ImageSource="/Images/Avatar/pollo.png"/>
+                            </Button.Background>
+                        </Button>
+                        <Button  Height="95" Width="95">
+                            <Button.Background>
+                                <ImageBrush ImageSource="/Images/Avatar/chica_rosa.png"/>
+                            </Button.Background>
+                        </Button>
+                        <Button  Height="95" Width="95">
+                            <Button.Background>
+                                <ImageBrush ImageSource="/Images/Avatar/chico.png"/>
+                            </Button.Background>
+                        </Button>
+                    
+                    </DockPanel>
+             
+                    <!--<ScrollBar DockPanel.Dock="Bottom" Orientation="Horizontal" Width="auto"  />-->
             
+                </StackPanel>
+            </ScrollViewer>
+
+
+
+        </StackPanel>
+        <!--<StackPanel x:Name="spAvatar" Style="{StaticResource sp_General}" Visibility="Hidden">
+        </StackPanel>
+        <StackPanel x:Name="spEscenario" Style="{StaticResource sp_General}"> 
         </StackPanel>
         <StackPanel x:Name="spNave" Style="{StaticResource sp_General}">
-            
-        </StackPanel>
-        <StackPanel Name="spCreditos"  Style="{StaticResource sp_General}" 
+        </StackPanel>-->
+        <StackPanel Name="spCreditos"  Style="{StaticResource sp_General}"
                     HorizontalAlignment="Stretch" 
                     VerticalAlignment="Center">
             <Label Content="Inés del Amo" Style="{StaticResource lbl_Creditos}"/>

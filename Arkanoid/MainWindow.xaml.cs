@@ -28,6 +28,8 @@ namespace Arkanoid
         {
             InitializeComponent();
             DataContext = mArk;
+             
+            //tb_Nick.Text = mArk.AccData.EjecutarProcedimiento("Prueba", null).ToString();
         }
 
         

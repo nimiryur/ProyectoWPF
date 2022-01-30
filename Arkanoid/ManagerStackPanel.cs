@@ -34,7 +34,7 @@ namespace Arkanoid
         //CONSTRUCTOR
         public ManagerStackPanel()
         {
-            SpCarga = VISIBLE;
+            SpCarga = HIDDEN;
             timer.Interval = TimeSpan.FromMilliseconds(1000);
             timer.Tick += delegate { SpCarga = HIDDEN; timer.Stop(); };
             timer.Start();

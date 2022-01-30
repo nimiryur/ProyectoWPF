@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
 using System.Runtime.CompilerServices;
@@ -12,11 +13,17 @@ namespace Arkanoid
 
     {
 
+        //public ObservableCollection<object> listaClasificados = new ObservableCollection<object>();
+
         //private AccDatos accData = new AccDatos();
         private Musica mpMusic = new Musica();
         private Musica mpSFX = new Musica();
+
+        public Jugador player = new Jugador();
         public VentanaCarga VenCar { get; set; }
         public ManagerStackPanel ManSPanel { get; set; }
+
+        public AccDatos AccData { get; set; }
 
 
 
@@ -26,7 +33,12 @@ namespace Arkanoid
         {
             VenCar = new VentanaCarga();
             ManSPanel = new ManagerStackPanel();
+            AccData = new AccDatos();
+       
+           
 
+            //listaClasificados.Add("1. Pedro 4656874526");
+            //listaClasificados.Add("2. Pepe  37973131");
 
         }
 
