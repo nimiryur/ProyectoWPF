@@ -35,7 +35,7 @@ namespace Arkanoid
             ManSPanel = new ManagerStackPanel();
             AccData = new AccDatos();
        
-           //hola que ase
+            //hola que ase
 
             //listaClasificados.Add("1. Pedro 4656874526");
             //listaClasificados.Add("2. Pepe  37973131");
