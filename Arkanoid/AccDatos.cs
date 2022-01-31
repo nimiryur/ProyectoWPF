@@ -11,16 +11,26 @@ namespace Arkanoid
 {
     class AccDatos
     {
-        string connectionString = "datasource=127.0.0.1;port=3306;username=root;password=1234;database=sakila;";
+        string connectionString = "";//"datasource=127.0.0.1;port=3306;username=root;password=1234;database=sakila;";
         MySqlConnection databaseConnection;
+
+
+        public const int P_IN = (int)ParameterDirection.Input;
+        public const int P_OUT = (int)ParameterDirection.Output;
+
+        public const int T_Int = (int)MySqlDbType.Int32;
+        public const int T_Double = (int)MySqlDbType.Double;
+        public const int T_Bool = (int)MySqlDbType.Bool;
+        public const int T_String = (int)MySqlDbType.String;
+        public const int T_VarChar = (int)MySqlDbType.VarChar;
 
         public AccDatos()
         {
-            databaseConnection = new MySqlConnection(connectionString);  //constructor de acceso a la base de datos.
+            databaseConnection = new MySqlConnection("datasource=127.0.0.1;port=3306;username=root;password=1234;database=sakila;");  //constructor de acceso a la base de datos.
         }
-        public AccDatos(string servidorDatos, string puerto, string u, string pwd, string bbdd)
+        public AccDatos(string servidorDatos, string puerto, string user, string pwd, string bbdd)
         {
-
+            connectionString = $"datasource = {servidorDatos};port={puerto};username={user};password={pwd};database={bbdd};";
         }
         private void EstablecerConexion()
         {
@@ -33,13 +43,17 @@ namespace Arkanoid
         }
 
         public int EjecutarProcedimiento(string nombrePA,
-                                                    List<object> pIN)
+                                         params object[] parametros)
         //se puede pasar la lista de parametros junto con la lista de los objetos 
         {
+
             MySqlCommand cmd = new MySqlCommand(nombrePA, databaseConnection);
 
             // if(nombrePA == "AgregarPelicula")
             // {
+
+
+
             cmd.CommandType = CommandType.StoredProcedure;
             cmd.Parameters.AddWithValue("@valor1", 20);
             cmd.Parameters.AddWithValue("@valor2", 20);

@@ -5,22 +5,31 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Arkanoid"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MainWindow" 
+        Height="{Binding Path=ConfPantalla.HeightWindow, Mode=TwoWay}" 
+        Width="{Binding Path=ConfPantalla.WidthWindow, Mode=TwoWay}"
+        SizeChanged="Window_SizeChanged"
+        WindowStyle="{Binding Path=ManSPanel.WindowStyle, Mode=TwoWay}"
+        Background="Transparent"
+        ResizeMode="NoResize"
+        >
+       
+    <Grid >
 
-    <Grid>
         <Grid.Background>
             <ImageBrush Stretch="UniformToFill" 
                             AlignmentY="Center" 
                             AlignmentX="Center"
-                            ImageSource="/milky-way-ge7a2c52f4_1920.jpg"
+                            ImageSource="/milky-way-ge7a2c52f4_1920.jpg" 
                             ViewboxUnits="RelativeToBoundingBox"
                             TileMode="None"/>
+            <!-- ImageSource="{Binding ConfPantalla.ActualEscenario, Mode=TwoWay}" -->
         </Grid.Background>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="4*"/>
             <ColumnDefinition Width="*"/>
-        </Grid.ColumnDefinitions><!-- hola -->
+        </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="*"/>
             <RowDefinition Height="3*"/>
@@ -28,12 +37,35 @@
         </Grid.RowDefinitions>
 
         <StackPanel x:Name="spTitulo" Grid.Row="0" Grid.Column="1" HorizontalAlignment="Center">
-            <Label Content="ARKANOID MI CAMBIO" Style="{StaticResource lbl_Titulo}"/>
+            <Label Content="ARKANOID" Style="{StaticResource lbl_Titulo}"/>
         </StackPanel>
-        <StackPanel x:Name="spCarga"  Style="{StaticResource sp_General}" Visibility="{Binding Path=ManSPanel.SpCarga}" >
-            <Label x:Name="lbl_Cargando" Content="{Binding Path=VenCar.TextoCargando}" FontSize="30" Foreground="#FFF5EEEE" />
+        <StackPanel HorizontalAlignment="Center" x:Name="spCarga" Grid.RowSpan="2" Grid.Column="0" Grid.ColumnSpan="3"  Style="{StaticResource sp_General}" Visibility="{Binding Path=ManSPanel.SpCarga, Mode=TwoWay}" >
+            <!--{Binding Path=ManSPanel.SpCarga}-->
+            <Image Margin="0,0,0,0" Source="Images/pelota.png" Width="50" RenderTransformOrigin="0.5,0.5" >
+                <Image.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform/>
+                        <SkewTransform/>
+                        <RotateTransform Angle="{Binding VenCar.Angle_Pelota, Mode=TwoWay}"/>
+                        <TranslateTransform Y="{Binding VenCar.Y_Pelota, Mode=TwoWay}"/>
+                    </TransformGroup>
+                </Image.RenderTransform>
+            </Image>
+                <Image  Margin="0,190,0,0" Source="{Binding ConfPantalla.ActualNave, Mode=TwoWay}" Width="200" RenderTransformOrigin="0.5,0.5" >
+                    <Image.RenderTransform>
+                        <TransformGroup>
+                            <ScaleTransform/>
+                            <SkewTransform/>
+                            <RotateTransform />
+                            <TranslateTransform X="{Binding VenCar.X_Nave, Mode=TwoWay}"/>
+                        </TransformGroup>
+                    </Image.RenderTransform>
+                </Image> 
+
+            <Label Margin="0,10,0,0"  Style="{StaticResource lbl_Texto}" x:Name="lbl_Cargando" Content="{Binding Path=VenCar.TextoCargando}" FontSize="30" Foreground="#FFF5EEEE" />
         </StackPanel>
-        <StackPanel x:Name="spLogin" Style="{StaticResource sp_General}" Visibility="Visible" >
+        <StackPanel x:Name="spLogin" Style="{StaticResource sp_General}" Visibility="{Binding Path=ManSPanel.SpLogin, Mode=TwoWay}">
+            <!-- {Binding Path=ManSPanel.SpLogin} -->
             <StackPanel>
                 <StackPanel>
                     <Label Content="Nick: " />
@@ -49,9 +81,10 @@
                 <Button Content="REGISTRARSE" Width="278" Template="{StaticResource btnStyleCopy}"/>
             </DockPanel>
         </StackPanel>
-        <StackPanel x:Name="spRegistro" Style="{StaticResource sp_General}"  Grid.RowSpan="2"  >
-            <StackPanel  >
-                <StackPanel>
+        <StackPanel x:Name="spRegistro" Style="{StaticResource sp_General}" >
+            <!-- {Binding Path=ManSPanel.SpRegistro} -->
+            <StackPanel  HorizontalAlignment="Center"  >
+                <StackPanel >
                     <Label Content="Nick: "  Style="{StaticResource lbl_Texto}"/>
                     <TextBox x:Name="tb_NickR" />
                 </StackPanel>
@@ -72,12 +105,14 @@
                 <Button Content="REGISTRARSE" FontSize="30" Width="200"/>
             </DockPanel>
         </StackPanel>
-        <StackPanel x:Name="sp_Clasificacion" Style="{StaticResource sp_General}" Grid.RowSpan="2"  >
+        <StackPanel x:Name="spClasificacion" Style="{StaticResource sp_General}" Grid.RowSpan="2"  >
+            <!-- {Binding Path=ManSPanel.SpClasificacion} -->
             <Label Content="Clasificacion" Style="{StaticResource lbl_Creditos}"/>
             <Label Content="{Binding GetClasificacion}" />
             <ListView ItemsSource="{Binding}" IsSynchronizedWithCurrentItem="True"/>
         </StackPanel>
-        <StackPanel x:Name="spMenu" Style="{StaticResource sp_General}" Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="3" Grid.RowSpan="2"  >
+        <StackPanel x:Name="spMenu" Style="{StaticResource sp_General}" Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="3" Grid.RowSpan="2">
+            <!-- {Binding Path=ManSPanel.SpMenu} -->
             <DockPanel  >
                 <Button Style="{StaticResource btn_Logos}" HorizontalAlignment="Left" >
                     <Button.Background>
@@ -94,84 +129,161 @@
                 <Button Name="btnPlay" Content="PLAY" FontSize="30" Padding="15" HorizontalAlignment="Center"/>
             </StackPanel>
         </StackPanel>
-        <StackPanel x:Name="spAjustes" Style="{StaticResource sp_General}" >
-            <DockPanel HorizontalAlignment="Stretch">
-                <Label Content="NICK" Style="{StaticResource lbl_Texto}" HorizontalContentAlignment="Left"/>
-                <TextBox x:Name="tbNick" Width="200" HorizontalAlignment="Center"/>
-                <Button x:Name="actNick" Content="Actualizar" Width="100" HorizontalAlignment="Right"/>
-            </DockPanel>
-            <DockPanel HorizontalAlignment="Stretch" >
-                <Label Content="MUSICA" Style="{StaticResource lbl_Texto}" HorizontalContentAlignment="Left"/>
-                <Slider x:Name="slMusica" Width="325" VerticalAlignment="Center" HorizontalAlignment="Right"/>
-            </DockPanel>
-            <DockPanel HorizontalAlignment="Stretch" >
-                <Label Content="EFECTOS" Style="{StaticResource lbl_Texto}" HorizontalContentAlignment="Left"/>
-                <Slider x:Name="slEfectos" Width="325" VerticalAlignment="Center"  HorizontalAlignment="Right"/>
-            </DockPanel>
-            <ScrollViewer  HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Hidden">
-                <StackPanel >
-                    <DockPanel>
-                        <Button Height="95" Width="95">
-                            <Button.Background>
-                                <ImageBrush ImageSource="/Images/Avatar/pollo.png"/>
-                            </Button.Background>
-                        </Button>
-                        <Button Height="95" Width="95">
-                            <Button.Background>
-                                <ImageBrush ImageSource="/Images/Avatar/pollo.png"/>
-                            </Button.Background>
-                        </Button>
-                        <Button Height="95" Width="95">
-                            <Button.Background>
-                                <ImageBrush ImageSource="/Images/Avatar/pollo.png"/>
-                            </Button.Background>
-                        </Button>
-                        <Button Height="95" Width="95">
-                            <Button.Background>
-                                <ImageBrush ImageSource="/Images/Avatar/pollo.png"/>
-                            </Button.Background>
-                        </Button>
-                        <Button Height="95" Width="95">
-                            <Button.Background>
-                                <ImageBrush ImageSource="/Images/Avatar/pollo.png"/>
-                            </Button.Background>
-                        </Button>
-                        <Button  Height="95" Width="95">
-                            <Button.Background>
-                                <ImageBrush ImageSource="/Images/Avatar/chica_rosa.png"/>
-                            </Button.Background>
-                        </Button>
-                        <Button  Height="95" Width="95">
-                            <Button.Background>
-                                <ImageBrush ImageSource="/Images/Avatar/chico.png"/>
-                            </Button.Background>
-                        </Button>
-                    
-                    </DockPanel>
-             
-                    <!--<ScrollBar DockPanel.Dock="Bottom" Orientation="Horizontal" Width="auto"  />-->
-            
+        <StackPanel  x:Name="spAjustes" Style="{StaticResource sp_General}"   >
+            <!-- {Binding Path=ManSPanel.SpAjustes} -->
+            <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto">
+                <StackPanel>
+                    <StackPanel Style="{StaticResource sp_General}" >
+                        <ScrollViewer  HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Hidden">
+                        </ScrollViewer>
+                        <DockPanel HorizontalAlignment="Stretch">
+                            <Label Content="NICK" Style="{StaticResource lbl_Texto}" HorizontalContentAlignment="Left"/>
+                            <TextBox x:Name="tbNick" Width="200" HorizontalAlignment="Center"/>
+                            <Button x:Name="actNick" Content="Actualizar" Width="100" HorizontalAlignment="Right"/>
+                        </DockPanel>
+                        <DockPanel HorizontalAlignment="Stretch" >
+                            <Label Content="MUSICA" Style="{StaticResource lbl_Texto}" HorizontalContentAlignment="Left"/>
+                            <Slider x:Name="slMusica" Width="325" VerticalAlignment="Center" HorizontalAlignment="Right"/>
+                        </DockPanel>
+                        <DockPanel HorizontalAlignment="Stretch" >
+                            <Label Content="EFECTOS" Style="{StaticResource lbl_Texto}" HorizontalContentAlignment="Left"/>
+                            <Slider x:Name="slEfectos" Width="325" VerticalAlignment="Center"  HorizontalAlignment="Right"/>
+                        </DockPanel>
+                        <DockPanel HorizontalAlignment="Stretch" >
+                            <Label Content="Configuración de la pantalla:" Style="{StaticResource lbl_Texto}" HorizontalContentAlignment="Left"/>
+                            <ComboBox  x:Name="comboxElegirTamWindow"  IsReadOnly="True" 
+                   VerticalAlignment="Center" SelectedIndex="0" 
+                       SelectionChanged="comboxElegirTamWindow_SelectionChanged"
+                   ItemsSource="{Binding ConfPantalla.ChangeWidthHeight}">
+
+                            </ComboBox>
+
+                        </DockPanel>
+
+
+                        <ScrollViewer  VerticalScrollBarVisibility="Hidden">
+                            <StackPanel >
+                                <Label Content="Elige tu avatar:" Style="{StaticResource lbl_Texto}" HorizontalContentAlignment="Left"/>
+                                <DockPanel >
+                                    <ListView 
+                             ItemsSource="{Binding ConfPantalla.Avatars}" 
+                             Style="{StaticResource listAjustes}" 
+                             >
+                                        <ListView.ItemTemplate >
+                                            <DataTemplate>
+                                                <Button Style="{StaticResource btnAjustesList}" Click="BtnCambiarAvatar" >
+                                                    <Image x:Name="image" Source="{Binding}" />
+                                                </Button>
+                                            </DataTemplate>
+                                        </ListView.ItemTemplate>
+                                        <ListBox.ItemsPanel>
+                                            <ItemsPanelTemplate >
+                                                <WrapPanel IsItemsHost="True"  />
+                                            </ItemsPanelTemplate>
+                                        </ListBox.ItemsPanel>
+                                        <ListView.ItemContainerStyle>
+                                            <Style TargetType="ListViewItem">
+                                                <Setter Property="Focusable" Value="false"/>
+                                            </Style>
+                                        </ListView.ItemContainerStyle>
+                                    </ListView>
+                                </DockPanel>
+                                <!--<ScrollBar DockPanel.Dock="Bottom" Orientation="Horizontal" Width="auto"  />-->
+                            </StackPanel>
+                        </ScrollViewer>
+
+                        <ScrollViewer  VerticalScrollBarVisibility="Hidden">
+                            <StackPanel >
+                                <Label Content="Elige tu nave:" Style="{StaticResource lbl_Texto}" HorizontalContentAlignment="Left"/>
+                                <DockPanel >
+                                    <ListView  
+                             ItemsSource="{Binding ConfPantalla.Naves}" 
+                             Style="{StaticResource listAjustes}" 
+                             >
+                                        <ListView.ItemTemplate >
+                                            <DataTemplate>
+                                                <Button Style="{StaticResource btnAjustesList}" Click="BtnCambiarNave" >
+                                                    <Image x:Name="image" Source="{Binding}" />
+                                                </Button>
+                                            </DataTemplate>
+                                        </ListView.ItemTemplate>
+                                        <ListBox.ItemsPanel>
+                                            <ItemsPanelTemplate >
+                                                <WrapPanel IsItemsHost="True"  />
+                                            </ItemsPanelTemplate>
+                                        </ListBox.ItemsPanel>
+                                        <ListView.ItemContainerStyle>
+                                            <Style TargetType="ListViewItem">
+                                                <Setter Property="Focusable" Value="false"/>
+                                            </Style>
+                                        </ListView.ItemContainerStyle>
+
+                                    </ListView>
+
+
+
+                                </DockPanel>
+
+                                <!--<ScrollBar DockPanel.Dock="Bottom" Orientation="Horizontal" Width="auto"  />-->
+
+                            </StackPanel>
+                        </ScrollViewer>
+
+
+
+                    </StackPanel>
                 </StackPanel>
             </ScrollViewer>
 
-
+            <ScrollViewer  VerticalScrollBarVisibility="Hidden">
+                <StackPanel >
+                    <Label Content="Elige tu Escenario:" Style="{StaticResource lbl_Texto}" HorizontalContentAlignment="Left"/>
+                    <DockPanel >
+                        <ListView 
+                             ItemsSource="{Binding ConfPantalla.Escenarios}" 
+                             Style="{StaticResource listAjustes}" 
+                             >
+                            <ListView.ItemTemplate >
+                                <DataTemplate>
+                                    <Button Style="{StaticResource btnAjustesList}"  Click="BtnCambiarEscenario" >
+                                        <Image x:Name="image" Source="{Binding}" />
+                                    </Button>
+                                </DataTemplate>
+                            </ListView.ItemTemplate>
+                            <ListBox.ItemsPanel>
+                                <ItemsPanelTemplate >
+                                    <WrapPanel IsItemsHost="True"  />
+                                </ItemsPanelTemplate>
+                            </ListBox.ItemsPanel>
+                            <ListView.ItemContainerStyle>
+                                <Style TargetType="ListViewItem">
+                                    <Setter Property="Focusable" Value="false"/>
+                                </Style>
+                            </ListView.ItemContainerStyle>
+                        </ListView>
+                    </DockPanel>
+                    <!--<ScrollBar DockPanel.Dock="Bottom" Orientation="Horizontal" Width="auto"  />-->
+                </StackPanel>
+            </ScrollViewer>
 
         </StackPanel>
+
         <!--<StackPanel x:Name="spAvatar" Style="{StaticResource sp_General}" Visibility="Hidden">
         </StackPanel>
         <StackPanel x:Name="spEscenario" Style="{StaticResource sp_General}"> 
         </StackPanel>
         <StackPanel x:Name="spNave" Style="{StaticResource sp_General}">
         </StackPanel>-->
-        <StackPanel Name="spCreditos"  Style="{StaticResource sp_General}"
+        <StackPanel x:Name="spCreditos"  Style="{StaticResource sp_General}"
                     HorizontalAlignment="Stretch" 
                     VerticalAlignment="Center">
             <Label Content="Inés del Amo" Style="{StaticResource lbl_Creditos}"/>
             <Label Content="Guillermo Ruiz" Style="{StaticResource lbl_Creditos}"/>
             <Label Content="George Roman" Style="{StaticResource lbl_Creditos}" />
         </StackPanel>
-        <DockPanel Grid.Row="2" Grid.Column="2" HorizontalAlignment="Center" VerticalAlignment="Center" Visibility="Hidden" >
-            <Button FontSize="18" FontWeight="Bold" Width="94" >
+
+        <DockPanel x:Name="btnVolverAtras" Grid.Row="2" Grid.Column="2" HorizontalAlignment="Center" VerticalAlignment="Center" Visibility="Visible" >
+            <Button FontSize="18" FontWeight="Bold" Width="94"  >
                 <TextBlock TextAlignment="Center">VOLVER<LineBreak/>AL<LineBreak/> INICIO</TextBlock>
             </Button>
         </DockPanel>

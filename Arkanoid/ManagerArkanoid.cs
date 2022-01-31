@@ -25,16 +25,20 @@ namespace Arkanoid
 
         public AccDatos AccData { get; set; }
 
+        public ConfigPantalla ConfPantalla { get; set; }
 
 
 
         //CONSTRUCTOR
         public ManagerArkanoid()
         {
-            VenCar = new VentanaCarga();
+
+            
             ManSPanel = new ManagerStackPanel();
             AccData = new AccDatos();
-       
+            ConfPantalla = new ConfigPantalla();
+            VenCar = new VentanaCarga(ref ConfPantalla._widthWindow, ref ConfPantalla._heightWindow);
+            //127.0.0.1; port = 3306; username = root; password = 1234; database = sakila;
             //hola que ase
 
             //listaClasificados.Add("1. Pedro 4656874526");
@@ -43,7 +47,7 @@ namespace Arkanoid
         }
 
 
-            //EVENTOS
+        //EVENTOS
         public event PropertyChangedEventHandler PropertyChanged;
 
         private void NotifyPropertyChanged([CallerMemberName] string name = null)
