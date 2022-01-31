@@ -28,6 +28,10 @@
     <None Remove="Images\taza.png" />
     <None Remove="Images\tuerca.png" />
     <None Remove="milky-way-ge7a2c52f4_1920.jpg" />
+    <None Remove="Music\mixkit-complex-desire-1093.mp3" />
+    <None Remove="Music\mixkit-conference-audience-clapping-strongly-476.wav" />
+    <None Remove="Music\mixkit-i-wont-surrender-846.mp3" />
+    <None Remove="Music\mixkit-lust-966.mp3" />
   </ItemGroup>
 
   <ItemGroup>
@@ -92,6 +96,18 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="milky-way-ge7a2c52f4_1920.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Music\mixkit-complex-desire-1093.mp3">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Music\mixkit-conference-audience-clapping-strongly-476.wav">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Music\mixkit-i-wont-surrender-846.mp3">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Music\mixkit-lust-966.mp3">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
   </ItemGroup>

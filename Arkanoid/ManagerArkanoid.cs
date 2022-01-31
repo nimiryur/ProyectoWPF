@@ -6,6 +6,7 @@ using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Input;
 
 namespace Arkanoid 
 { 
@@ -13,13 +14,40 @@ namespace Arkanoid
 
     {
 
+        private double _volume;
+        private bool _mouseCaptured = false;
+
+        public double Volume
+        {
+            get { return _volume; }
+            set
+            {
+                _volume = value;
+                OnPropertyChanged("Volume");
+            }
+        }
+             
+        public bool MouseCaptured
+        {
+            get { return _mouseCaptured; }
+            set
+            {
+                _mouseCaptured = value;
+                OnPropertyChanged("MouseCaptured");
+            }
+        }
+
+
         //public ObservableCollection<object> listaClasificados = new ObservableCollection<object>();
 
         //private AccDatos accData = new AccDatos();
-        private Musica mpMusic = new Musica();
-        private Musica mpSFX = new Musica();
+
+        //private Musica mpSFX = new Musica();
 
         public Jugador player = new Jugador();
+
+
+        public Musica MpMusic { get; set; }
         public VentanaCarga VenCar { get; set; }
         public ManagerStackPanel ManSPanel { get; set; }
 
@@ -50,7 +78,7 @@ namespace Arkanoid
         //EVENTOS
         public event PropertyChangedEventHandler PropertyChanged;
 
-        private void NotifyPropertyChanged([CallerMemberName] string name = null)
+        private void OnPropertyChanged([CallerMemberName] string name = null)
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
         }
