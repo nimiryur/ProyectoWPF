@@ -37,18 +37,37 @@
         <StackPanel x:Name="spLogin" Style="{StaticResource sp_General}" Visibility="Visible" >
             <StackPanel>
                 <StackPanel>
-                    <Label Content="Nick: " />
-                    <TextBox x:Name="tb_Nick" />
+                    <Label Content="Nick: " Style="{StaticResource lbl_Texto}"/>
+                    <TextBox x:Name="tb_Nick" FontSize="18"/>
                 </StackPanel>
                 <StackPanel HorizontalAlignment="Stretch">
-                    <Label Content="Password: "/>
-                    <PasswordBox/>
+                    <Label Content="Password: " Style="{StaticResource lbl_Texto}"/>
+                    <PasswordBox  x:Name="tb_Pass" FontSize="18"/>
                 </StackPanel>
             </StackPanel>
-            <DockPanel>
-                <Button Content="ENTRAR" Width="256" Template="{StaticResource btnVarios}"/>
-                <Button Content="REGISTRARSE" Width="278" Template="{StaticResource btnStyleCopy}"/>
+            <DockPanel HorizontalAlignment="Stretch" Margin="50">
+                <Button Content="ENTRAR" Width="auto" Template="{StaticResource btnStyleCopy}"  Margin="0,0,25,0" />
+                <Button Content="REGISTRARSE" Width="auto" Template="{StaticResource btnStyleCopy}" HorizontalAlignment="Right"/>
             </DockPanel>
+            <!--<StackPanel>
+                <Border Background="Gray" BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Center" VerticalAlignment="Center" CornerRadius="3" Padding="2">
+                    <Border Background="Black" CornerRadius="3">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition/>
+                            </Grid.ColumnDefinitions>
+                            <TextBlock Text="Vol:" Foreground="White" VerticalAlignment="Center" Margin="4 0"/>
+                            <ProgressBar x:Name="volumeBar"  Height="10" 
+                    Value="{Binding Volume}" 
+                    Width="100"
+                    MouseMove="MouseMove" 
+                    MouseDown="MouseDown"
+                    MouseUp="MouseUp" Style="{DynamicResource VolumeStyle}" Grid.Column="1"/>
+                        </Grid>
+                    </Border>
+                </Border>
+            </StackPanel>-->
         </StackPanel>
         <StackPanel x:Name="spRegistro" Style="{StaticResource sp_General}"  Grid.RowSpan="2"  >
             <StackPanel  >
@@ -75,7 +94,7 @@
         </StackPanel>
         <StackPanel x:Name="sp_Clasificacion" Style="{StaticResource sp_General}" Grid.RowSpan="2"  >
             <Label Content="Clasificacion" Style="{StaticResource lbl_Creditos}"/>
-            <Label Content="{Binding GetClasificacion}" />
+            <!--<Label Content="{Binding GetClasificacion}" />-->
             <ListView ItemsSource="{Binding}" IsSynchronizedWithCurrentItem="True"/>
         </StackPanel>
         <StackPanel x:Name="spMenu" Style="{StaticResource sp_General}" Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="3" Grid.RowSpan="2"  >
